@@ -5,32 +5,32 @@ CREATE DATABASE scheduleTours;
 USE scheduleTours;
 
 CREATE TABLE agents (
-  id int primary key auto_increment,
-  name text,
-  phone_number text,
-  email text
+  id INT(11) primary key auto_increment,
+  name VARCHAR(255),
+  phone_number VARCHAR(255),
+  email VARCHAR(255)
 );
 
 CREATE TABLE listings (
-  id int primary key,
-  listing_price int,
-  agent_id int,
+  id INT(11) primary key,
+  listing_price INT(11),
+  agent_id INT(11),
   FOREIGN KEY (agent_id)
       REFERENCES agents(id)
 );
 
 CREATE TABLE users (
-  id int primary key auto_increment,
-  name text,
-  phone_number text,
-  email text
+  id INT(11) primary key auto_increment,
+  name VARCHAR(255),
+  phone_number VARCHAR(255),
+  email VARCHAR(255)
 );
 
 CREATE TABLE chats (
-  id int primary key auto_increment,
-  message text,
-  user_id int,
-  agent_id int,
+  id INT(11) primary key auto_increment,
+  message VARCHAR(255),
+  user_id INT(11),
+  agent_id INT(11),
   FOREIGN KEY (user_id)
       REFERENCES users(id),
   FOREIGN KEY (agent_id)
