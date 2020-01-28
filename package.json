@@ -10,11 +10,12 @@
   "scripts": {
     "react-start": "webpack -d --watch",
     "server-start": "nodemon server/index.js",
-    "test": "jest --config ./jest.config.json --watch --coverage",
+    "test": "jest --config ./jest.config.json --watch --coverage --verbose",
     "seed": "node db/index.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bluebird": "^3.7.2",
     "express": "^4.17.1",
     "mongoose": "^5.8.9",
     "path": "^0.12.7",
@@ -33,14 +34,17 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^23.6.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "faker": "^4.1.0",
     "jest": "^25.1.0",
+    "morgan": "^1.9.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
     "react-test-renderer": "^16.12.0",
+    "supertest": "^4.0.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   }
