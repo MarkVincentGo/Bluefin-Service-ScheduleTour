@@ -48,12 +48,14 @@ describe('App', () => {
       });
     }, 100));
 
+
     axios.get = jest.fn(() => promise);
+
 
     const wrapper = mount(<App />);
     expect(wrapper.find('li').length).toEqual(0);
 
-    axios.get()
+     axios.get()
       .then(() => {
         setImmediate(() => {
           wrapper.update();

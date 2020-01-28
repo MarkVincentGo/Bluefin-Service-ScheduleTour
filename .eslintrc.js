@@ -6,9 +6,11 @@
  */
 
 module.exports = {
+  ignorePatterns: 'public/bundle.js',
   extends: './node_modules/eslint-config-hackreactor/index.js',
   parserOptions: {
     ecmaVersion: 8,
     sourceType: "module"
-  }
+  },
+  plugins: "jest"
 };
