@@ -1,9 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import axios from 'axios';
 
 import App from '../src/app';
-import axios from 'axios';
+import CalendarContainer from '../src/CalendarContainer';
 
 jest.mock('axios');
 
@@ -70,7 +71,9 @@ describe('App', () => {
   // all the tests below are for future components...
   // no tests made for them yet.
   describe('Calendar', () => {
-    xtest('renders calendar list component', () => {
+    xtest('renders calendar entries for next two weeks', () => {
+      const wrapper = shallow(<CalendarContainer />);
+      expect(wrapper.find(CalendarEntry).legnth).toEqual(12)
 
     });
 
