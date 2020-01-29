@@ -7,18 +7,16 @@
     constructor(props) {
       super(props);
       this.state = {
-        listingId: null
+        houseData: null
       };
-      this.houseData = {};
     };
 
     componentDidMount() {
       if(this.props.listingId) {
         axios.get(`/house?listingId=${this.props.listingId}`)
           .then((response) => {
-            this.houseData = response.data[0];
             this.setState({
-              listingId: this.houseData.listingId
+              houseData: response.data[0]
             });
           });
       };
@@ -56,7 +54,6 @@
         nextTwoWeeks.month.push(months[monthWrite]);
 
         // this block deals with the dates
-        console.log(monthWrite, dateWrite, months31.includes(monthWrite))
         nextTwoWeeks.date.push(dateWrite)
           dateWrite += 1;
           // if month is february
@@ -81,7 +78,7 @@
         <div>
           <CalendarContainer date={this.getDates()}/>
           <p>{
-            this.state.listingId === null ? 'Hello' : this.houseData.name
+            this.state.houseData === null ? 'Hello' : this.state.houseData.name
             }
           </p>
         </div>
