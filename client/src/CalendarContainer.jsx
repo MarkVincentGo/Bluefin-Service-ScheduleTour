@@ -1,15 +1,19 @@
 import React from 'react';
+import CalendarEntry from './CalendarEntry';
 
-const CalendarContainer = (props) => (
+const CalendarContainer = ({ dates }) => {
+  return(
   <div>
-    {props.date.day.map((day, i) => (
+    {dates.day.map((day, i) => (
       <>
-        <div>{day}</div>
-        <div>{props.date.month[i]}</div>
-        <div>{props.date.date[i]}</div>
+        <CalendarEntry key={i} date={{
+          day: day,
+          month: dates.month[i],
+          date: dates.date[i]
+        }}/>
       </>
     ))}
   </div>
-);
+)};
 
 export default CalendarContainer;
