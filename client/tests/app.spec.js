@@ -114,10 +114,12 @@ describe('App', () => {
         const date = {
           day: 'Wednesday',
           month: 'January',
-          date: 28
+          date: 29
         };
-        const wrapper = shallow(<CalendarEntry date={date}/>);
-        expect(wrapper.find('div').length).toEqual(3)
+        const wrapper = mount(<CalendarEntry date={date}/>);
+        expect(wrapper.find('.date').text()).toEqual('29');
+        expect(wrapper.find('.month').text()).toEqual('January');
+        expect(wrapper.find('.day').text()).toEqual('Wednesday');
         //expect(props).arrayContaining['date', 'month', 'day']
       });
     });
