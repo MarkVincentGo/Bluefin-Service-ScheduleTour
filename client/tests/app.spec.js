@@ -117,7 +117,7 @@ describe('App', () => {
           date: 28
         };
         const wrapper = shallow(<CalendarEntry date={date}/>);
-        expect(wrapper.find('p').length).toEqual(3)
+        expect(wrapper.find('div').length).toEqual(3)
         //expect(props).arrayContaining['date', 'month', 'day']
       });
     });
