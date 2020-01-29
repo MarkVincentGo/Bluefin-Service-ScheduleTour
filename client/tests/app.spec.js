@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import App from '../src/app';
 import CalendarContainer from '../src/CalendarContainer';
+import CalendarEntry from '../src/CalendarEntry'
 
 jest.mock('axios');
 
@@ -38,7 +39,7 @@ describe('App', () => {
     })
 
     it('makes a call to the api', async () => {
-      const wrapper = mount(<App listingId={123456789}/>);
+      const wrapper = shallow(<App listingId={123456789}/>);
       await Promise.all([
         expect(axios.get).toHaveBeenCalledWith('/house?listingId=123456789'),
         expect(axios.get).toHaveBeenCalledTimes(1)
@@ -46,7 +47,7 @@ describe('App', () => {
     });
 
     it('changes the listingId state to be the number passed in as props', async () => {
-      const wrapper = mount(<App listingId={123456789}/>);
+      const wrapper = shallow(<App listingId={123456789}/>);
       const instance = wrapper.instance();
 
       expect(instance.props.listingId).toEqual(123456789);
@@ -65,34 +66,61 @@ describe('App', () => {
     });
 
     // to see if rerendering works... will change as components are added
-    it('renders the name of the agent to dom', async () => {
-        const wrapper = mount(<App listingId={123456789}/>);
-        await Promise.all([
-          wrapper.setState({houseData: {
-            id: 123456789,
-            listing_price: 123456,
-            name: 'Mamba'
-          }}, () => {
-            expect(wrapper.find('p').text()).toEqual('Mamba');
-          })
-        ]);
-    })
-
-
+    // it('renders the name of the agent to dom', async () => {
+    //     const wrapper = shallow(<App listingId={123456789}/>);
+    //     await Promise.all([
+    //       wrapper.setState({houseData: {
+    //         id: 123456789,
+    //         listing_price: 123456,
+    //         name: 'Mamba'
+    //       }}, () => {
+    //         expect(wrapper.find('p').text()).toEqual('Mamba');
+    //       })
+    //     ]);
+    // })
   });
 
-  // all the tests below are for future components...
-  // no tests made for them yet.
   describe('Calendar', () => {
-    xtest('renders calendar entries for next two weeks', () => {
-      const wrapper = shallow(<CalendarContainer />);
-      expect(wrapper.find(CalendarEntry).legnth).toEqual(12)
-
+    test('renders calendar entries for next two weeks', () => {
+      const dates = {
+        day: [
+          'Thursday',  'Friday',
+          'Saturday',  'Sunday',
+          'Monday',    'Tuesday',
+          'Wednesday', 'Thursday',
+          'Friday',    'Saturday',
+          'Sunday',    'Monday'
+        ],
+        month: [
+          'January',  'January',
+          'January',  'February',
+          'February', 'February',
+          'February', 'February',
+          'February', 'February',
+          'February', 'February'
+        ],
+        date: [
+          29, 30, 31, 1, 2,
+           3,  4,  5, 6, 7,
+           8,  9
+        ]
+      }
+      const wrapper = mount(<CalendarContainer dates={dates}/>);
+      expect(wrapper.find(CalendarEntry).length).toEqual(12);
     });
 
     describe('Calendar entry', () => {
-      xtest('snapshot renders', () => {
-
+      test('receives props of one day', () => {
+        const date = {
+          day: 'Wednesday',
+          month: 'January',
+          date: 29
+        };
+        const wrapper = mount(<CalendarEntry date={date}/>);
+        expect(wrapper.find('.date').text()).toEqual('29');
+        expect(wrapper.find('.month').text()).toEqual('January');
+        expect(wrapper.find('.day').text()).toEqual('Wednesday');
+        //expect(props).arrayContaining['date', 'month', 'day']
       });
     });
   });
