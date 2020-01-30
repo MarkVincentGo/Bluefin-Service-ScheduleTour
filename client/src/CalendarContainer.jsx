@@ -4,10 +4,17 @@ import { Wrapper } from './styles/CalendarContainer-style'
 import PropTypes from 'prop-types'
 
 
-const CalendarContainer = ({ dates }) => {
-  return(
+const CalendarContainer = ({ dates, clickFn, selectedDate }) => {
+  return (
   <Wrapper>
-    {dates.day.map((day, i) => (
+    {dates.day.map((day, i) => {
+      // logic: there cant be the same day number in two weeks. So comparing only the day would suffice
+      let selected = false;
+      if (selectedDate && selectedDate.day === day) {
+        selected = true;
+      }
+
+      return (
       <>
         <span>
           <CalendarEntry
@@ -16,10 +23,12 @@ const CalendarContainer = ({ dates }) => {
             day: day,
             month: dates.month[i],
             date: dates.date[i]
-          }}/>
+          }}
+          clickFn={clickFn}
+          selected={selected}/>
         </span>
       </>
-    ))}
+    )})}
   </Wrapper>
 )};
 

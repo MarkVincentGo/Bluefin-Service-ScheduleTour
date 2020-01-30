@@ -12,7 +12,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       houseData: null,
-      dates: getDates(),
       selectedDate: null,
     };
   };
@@ -28,12 +27,18 @@ export default class App extends Component {
     };
   };
 
+  calendarEntryClick(data) {
+    this.setState({
+      selectedDate: data
+    });
+  };
+
   scheduleClick() {
     // placeholder for scheduling data ...
-    const someData = 'some random time'
+    const selectedDate = this.state.selectedDate
     // ...
 
-    axios.post('/schedule', { someData })
+    axios.post('/schedule', { selectedDate })
       .then(response => {
         console.log(response.data);
       });
@@ -48,11 +53,15 @@ export default class App extends Component {
           {
             this.state.houseData === null ?
             <p>Hello</p> :
-            <CalendarContainer dates={this.state.dates}/>
+            <CalendarContainer
+            dates={getDates()}
+            clickFn={this.calendarEntryClick.bind(this)}
+            selectedDate={this.state.selectedDate}
+            />
           }
         </CalendarWrapper>
           <ScheduleButton
-          clickFn={ this.scheduleClick.bind(this) }/>
+          clickFn={this.scheduleClick.bind(this)}/>
           <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
       </AppWrapper>
     )

@@ -17,6 +17,12 @@ const Button = styled.div`
   &:hover {
     background-color: #268c89;
   }
+
+  &:active {
+    padding-top: 10px;
+    box-shadow: 0 0 0 2px #5ea0f7;
+  }
+
 `
 
 export { Button };
