@@ -5,7 +5,8 @@ import axios from 'axios';
 
 import App from '../src/app';
 import CalendarContainer from '../src/CalendarContainer';
-import CalendarEntry from '../src/CalendarEntry'
+import CalendarEntry from '../src/CalendarEntry';
+import ScheduleButton from '../src/ScheduleButton';
 
 jest.mock('axios');
 
@@ -28,6 +29,7 @@ describe('App', () => {
         ]
       };
       axios.get = jest.fn(() => Promise.resolve(data));
+      axios.post = jest.fn(() => Promise.resolve());
     });
 
     it('keeps the listingId state null if no number passed in as props', async () => {
@@ -127,8 +129,11 @@ describe('App', () => {
 
 
   describe('Schedule Tour Button', () => {
-    xtest('schedule tour button renders', () => {
+    it('sends a post request when clicked', async () => {
+      const wrapper = mount(<App listingId={123456789}/>);
+      wrapper.find(ScheduleButton).simulate('click');
 
+      await expect(axios.post).toHaveBeenCalledTimes(1);
     });
   });
 

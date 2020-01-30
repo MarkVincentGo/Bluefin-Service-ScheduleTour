@@ -29,8 +29,15 @@ export default class App extends Component {
   };
 
   scheduleClick() {
-    console.log('click')
-  }
+    // placeholder for scheduling data ...
+    const someData = 'some random time'
+    // ...
+
+    axios.post('/schedule', { someData })
+      .then(response => {
+        console.log(response.data);
+      });
+  };
 
   render() {
     return (

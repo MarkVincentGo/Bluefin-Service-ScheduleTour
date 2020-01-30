@@ -10,7 +10,7 @@ mainApp.use(express.static(path.join(__dirname, '../public')));
 mainApp.use(morgan('dev'));
 mainApp.use(express.json());
 
-mainApp.get('/house' ,(req, res) => {
+mainApp.get('/house', (req, res) => {
   let q = (req.query);
   let id = q.listingId;
   db.getData(id, (err, results) => {
@@ -19,8 +19,14 @@ mainApp.get('/house' ,(req, res) => {
     } else {
       res.send(results);
     }
-  })
-})
+  });
+});
+
+mainApp.post('/schedule', (req, res) => {
+  // for testing the front end... no added functionality yet
+  console.log(req.body);
+  res.send('Scheduled!')
+});
 
 mainApp.listen(mainPort, () => {
   console.log(`APP is listening on port ${mainPort}`);
