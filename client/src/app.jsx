@@ -12,7 +12,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       houseData: null,
-      dates: getDates()
+      dates: getDates(),
+      selectedDate: null,
     };
   };
 
@@ -27,6 +28,10 @@ export default class App extends Component {
     };
   };
 
+  scheduleClick() {
+    console.log('click')
+  }
+
   render() {
     return (
       <AppWrapper>
@@ -39,7 +44,8 @@ export default class App extends Component {
             <CalendarContainer dates={this.state.dates}/>
           }
         </CalendarWrapper>
-          <ScheduleButton />
+          <ScheduleButton
+          clickFn={ this.scheduleClick.bind(this) }/>
           <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
       </AppWrapper>
     )

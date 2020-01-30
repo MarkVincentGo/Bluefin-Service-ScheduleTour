@@ -1,14 +1,8 @@
 import React from 'react';
 import CalendarEntry from './CalendarEntry';
-import styled from 'styled-components';
+import { Wrapper } from './styles/CalendarContainer-style'
 import PropTypes from 'prop-types'
 
-const Wrapper = styled.div`
-  background: aliceBlue;
-  display: inline-block;
-  white-space: nowrap;
-  overflow-x: hidden;
-`;
 
 const CalendarContainer = ({ dates }) => {
   return(
