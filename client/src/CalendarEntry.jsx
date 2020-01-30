@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import { Wrapper, Day, Date, Month } from './styles/CalendarEntry-style'
 
 const CalendarEntry = ({ date }) => (
-  <>
-    <div className="date">{date.date}</div>
-    <div className="month">{date.month}</div>
-    <div className="day">{date.day}</div>
-  </>
-)
+  <Wrapper>
+    <Day className="day">{date.day}</Day>
+    <Date className="date">{date.date}</Date>
+    <Month className="month">{date.month}</Month>
+  </Wrapper>
+);
+
+CalendarEntry.propTypes = {
+  dates: PropTypes.object,
+}
 
 export default CalendarEntry;

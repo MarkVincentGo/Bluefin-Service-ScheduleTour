@@ -112,14 +112,14 @@ describe('App', () => {
     describe('Calendar entry', () => {
       test('receives props of one day', () => {
         const date = {
-          day: 'Wednesday',
-          month: 'January',
+          day: 'WEDNESDAY',
+          month: 'JAN',
           date: 29
         };
-        const wrapper = mount(<CalendarEntry date={date}/>);
+        const wrapper = shallow(<CalendarEntry date={date}/>).dive();
         expect(wrapper.find('.date').text()).toEqual('29');
-        expect(wrapper.find('.month').text()).toEqual('January');
-        expect(wrapper.find('.day').text()).toEqual('Wednesday');
+        expect(wrapper.find('.month').text()).toEqual('JAN');
+        expect(wrapper.find('.day').text()).toEqual('WEDNESDAY');
         //expect(props).arrayContaining['date', 'month', 'day']
       });
     });

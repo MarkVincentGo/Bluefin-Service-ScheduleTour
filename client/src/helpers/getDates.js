@@ -8,17 +8,17 @@ const getDates = () => {
   let dateWrite = date;
   let dayWrite = day;
   let monthWrite = month;
-  let yearWrite = year;
+  const yearWrite = year;
 
-  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const days = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
 
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-  let nextTwoWeeks = {
+  const nextTwoWeeks = {
     day: [],
     month: [],
-    date: []
-  }
+    date: [],
+  };
 
   const months31 = [0, 2, 4, 6, 7, 9, 11];
 
@@ -26,15 +26,15 @@ const getDates = () => {
     // this block deals with the days
     nextTwoWeeks.day.push(days[dayWrite]);
     dayWrite += 1;
-    if (dayWrite === 7) {dayWrite = 0};
+    if (dayWrite === 7) { dayWrite = 0; };
 
     // this blick deals with months
     nextTwoWeeks.month.push(months[monthWrite]);
 
     // this block deals with the dates
-    nextTwoWeeks.date.push(dateWrite)
+    nextTwoWeeks.date.push(dateWrite);
       dateWrite += 1;
-      // if month is february
+    // if month is february
     if (monthWrite === 1) {
       if (yearWrite % 4 === 0 && dateWrite === 30) {
         dateWrite = 1;
