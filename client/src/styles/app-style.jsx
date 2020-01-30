@@ -15,8 +15,9 @@ const Header = styled.h3`
 
 const Paragraph = styled.div`
   color: #999;
-  margin-top: 18px;
+  margin-top: 5px;
   margin-left: 10px;
+  text-align: center;
   font-size: 0.75rem;
 `;
 

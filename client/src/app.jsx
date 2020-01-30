@@ -5,13 +5,15 @@ import getDates from './helpers/getDates.js'
 import { AppWrapper, Header, Paragraph, GlobalStyles, CalendarWrapper } from './styles/app-style';
 
 import CalendarContainer from './CalendarContainer'
+import ScheduleButton from './ScheduleButton'
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       houseData: null,
-      dates: getDates()
+      dates: getDates(),
+      selectedDate: null,
     };
   };
 
@@ -26,6 +28,17 @@ export default class App extends Component {
     };
   };
 
+  scheduleClick() {
+    // placeholder for scheduling data ...
+    const someData = 'some random time'
+    // ...
+
+    axios.post('/schedule', { someData })
+      .then(response => {
+        console.log(response.data);
+      });
+  };
+
   render() {
     return (
       <AppWrapper>
@@ -38,6 +51,8 @@ export default class App extends Component {
             <CalendarContainer dates={this.state.dates}/>
           }
         </CalendarWrapper>
+          <ScheduleButton
+          clickFn={ this.scheduleClick.bind(this) }/>
           <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
       </AppWrapper>
     )
