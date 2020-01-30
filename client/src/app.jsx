@@ -64,8 +64,9 @@ export default class App extends Component {
           <ScheduleButton
           clickFn={this.scheduleClick.bind(this)}/>
           <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
-          <Contact />
+          <Contact
+          phone={ this.state.houseData ? this.state.houseData.phone_number : 'Didnt get it' }/>
       </AppWrapper>
     )
-  }
+  };
 };
