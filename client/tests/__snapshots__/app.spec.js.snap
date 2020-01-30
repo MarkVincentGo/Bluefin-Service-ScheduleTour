@@ -17,7 +17,13 @@ exports[`App snapshot renders 1`] = `
     </p>
   </div>
   <div
-    className="sc-AykKE cFPagu"
+    className="sc-fzXfLO YBXKY"
+    onClick={[Function]}
+  >
+    Schedule Tour
+  </div>
+  <div
+    className="sc-AykKE dVMeRz"
   >
     It's free, with no obligation - cancel anytime
   </div>
