@@ -5,6 +5,7 @@ import getDates from './helpers/getDates.js'
 import { AppWrapper, Header, Paragraph, GlobalStyles, CalendarWrapper } from './styles/app-style';
 
 import CalendarContainer from './CalendarContainer'
+import ScheduleButton from './ScheduleButton'
 
 export default class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ export default class App extends Component {
             <CalendarContainer dates={this.state.dates}/>
           }
         </CalendarWrapper>
+          <ScheduleButton />
           <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
       </AppWrapper>
     )
