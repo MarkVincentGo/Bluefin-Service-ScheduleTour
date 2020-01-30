@@ -1,25 +1,28 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { mount, shallow } from 'enzyme';
+import Enzyme, { mount, shallow } from 'enzyme';
 import axios from 'axios';
 
 import App from '../src/app';
 import CalendarContainer from '../src/CalendarContainer';
 import CalendarEntry from '../src/CalendarEntry';
 import ScheduleButton from '../src/ScheduleButton';
+import Contact from '../src/Contact'
+import { Box1, Box2 } from '../src/styles/Contact-style'
 
 jest.mock('axios');
 
 describe('App', () => {
-  it('snapshot renders', () => {
+  xit('snapshot renders', () => {
     const app = renderer.create(<App />);
     let tree = app.toJSON();
     expect(app).toMatchSnapshot();
   });
 
   describe('On mount', () => {
+    let data;
     beforeEach(() => {
-      const data = {
+      data = {
         data: [
           {
             id: 123456789,
@@ -55,11 +58,7 @@ describe('App', () => {
       expect(instance.props.listingId).toEqual(123456789);
       await Promise.all([
         expect(axios.get).toHaveBeenCalledTimes(1),
-        wrapper.setState({houseData: {
-          id: 123456789,
-          listing_price: 123456,
-          name: 'Mamba'
-        }}, () => {
+        wrapper.setState({houseData: data.data[0]}, () => {
           expect(wrapper.state().houseData.id).toEqual(123456789);
           expect(wrapper.state().houseData.listing_price).toEqual(123456);
           expect(wrapper.state().houseData.name).toEqual('Mamba');
@@ -83,7 +82,13 @@ describe('App', () => {
   });
 
   describe('Calendar', () => {
-    test('renders calendar entries for next two weeks', () => {
+    it('should render to the dom', () => {
+      const wrapper = shallow(<App listingId={123456789}/>);
+      wrapper.setState({houseData: 'something'});
+      expect(wrapper.find(CalendarContainer).length).toEqual(1);
+    });
+
+    it('renders calendar entries for next two weeks', () => {
       const dates = {
         day: [
           'Thursday',  'Friday',
@@ -112,18 +117,41 @@ describe('App', () => {
     });
 
     describe('Calendar entry', () => {
-      test('receives props of one day', () => {
-        const date = {
+      let date;
+      beforeEach(() => {
+        date = {
           day: 'WEDNESDAY',
           month: 'JAN',
           date: 29
         };
+      });
+
+      it('receives props of one day', () => {
         const wrapper = shallow(<CalendarEntry date={date}/>).dive();
         expect(wrapper.find('.date').text()).toEqual('29');
         expect(wrapper.find('.month').text()).toEqual('JAN');
         expect(wrapper.find('.day').text()).toEqual('WEDNESDAY');
-        //expect(props).arrayContaining['date', 'month', 'day']
       });
+
+      it('Renders Card Styling for selected entry', () => {
+        // eslint-disable-next-line react/jsx-filename-extension
+        const wrapper = mount(<CalendarEntry date={date} selected={true} />);
+        expect(wrapper).toContainMatchingElement('Selected');
+        expect(wrapper).not.toContainMatchingElement('Not Selected');
+        expect(wrapper).toContainMatchingElement('Day');
+        expect(wrapper).toContainMatchingElement('Date');
+        expect(wrapper).toContainMatchingElement('Month');
+       });
+
+       it('Renders Card Styling for selected entry', () => {
+        // eslint-disable-next-line react/jsx-filename-extension
+        const wrapper = mount(<CalendarEntry date={date} selected={false} />);
+        expect(wrapper).toContainMatchingElement('NotSelected');
+        expect(wrapper).not.toContainMatchingElement('Selected');
+        expect(wrapper).toContainMatchingElement('Day');
+        expect(wrapper).toContainMatchingElement('Date');
+        expect(wrapper).toContainMatchingElement('Month');
+       });
     });
   });
 
@@ -135,18 +163,40 @@ describe('App', () => {
 
       await expect(axios.post).toHaveBeenCalledTimes(1);
     });
+
+    it('Renders Button Styling', () => {
+      // eslint-disable-next-line react/jsx-filename-extension
+      const wrapper = mount(<ScheduleButton />);
+      expect(wrapper).toContainMatchingElement('Button');
+    });
   });
 
   describe('Ask Button', () => {
-    xtest('ask button renders', () => {
-
+    it('ask button renders', () => {
+      const wrapper = shallow(<Contact />);
+      expect(wrapper.find('AskQuestion').length).toEqual(1);
     });
+
+    it('Renders Button Styling', () => {
+      // eslint-disable-next-line react/jsx-filename-extension
+      const wrapper = mount(<Contact />);
+      expect(wrapper).toContainMatchingElement('Wrapper');
+      expect(wrapper).toContainMatchingElement('AskQuestion');
+     });
   });
 
   describe('Contact Button', () => {
-    xtest('contact button renders', () => {
-
+    it('contact button renders', () => {
+      const wrapper = shallow(<Contact />);
+      expect(wrapper.find('PhoneNumber').length).toEqual(1);
     });
+
+    it('Renders Button Styling', () => {
+      // eslint-disable-next-line react/jsx-filename-extension
+      const wrapper = mount(<Contact />);
+      expect(wrapper).toContainMatchingElement('Wrapper');
+      expect(wrapper).toContainMatchingElement('PhoneNumber');
+     });
   });
 
   describe('Refund Button', () => {

@@ -10,9 +10,9 @@ const CalendarContainer = ({ dates, clickFn, selectedDate }) => {
     {dates.day.map((day, i) => {
       // logic: there cant be the same day number in two weeks. So comparing only the day would suffice
       let selected = false;
-      if (selectedDate && selectedDate.day === day) {
+      if (selectedDate && selectedDate.date === dates.date[i]) {
         selected = true;
-      }
+      };
 
       return (
       <>
