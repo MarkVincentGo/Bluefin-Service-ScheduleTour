@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import axios from 'axios';
 import getDates from './helpers/getDates';
@@ -19,6 +20,8 @@ export default class App extends Component {
       houseData: null,
       selectedDate: null,
     };
+    this.calendarEntryClick = this.calendarEntryClick.bind(this);
+    this.scheduleClick = this.scheduleClick.bind(this);
   }
 
   componentDidMount() {
@@ -46,14 +49,13 @@ export default class App extends Component {
 
     axios.post('/schedule', { selectedDate })
       .then((response) => {
+        // eslint-disable-next-line no-console
         console.log(response.data);
       });
   }
 
   render() {
     const { houseData, selectedDate } = this.state;
-    const calendarEntryClick = this.calendarEntryClick.bind(this);
-    const scheduleClick = this.scheduleClick.bind(this);
 
     return (
       <AppWrapper>
@@ -66,20 +68,21 @@ export default class App extends Component {
               : (
                 <CalendarContainer
                   dates={getDates()}
-                  clickFn={ calendarEntryClick }
+                  clickFn={this.calendarEntryClick}
                   selectedDate={selectedDate}
                 />
               )
           }
         </CalendarWrapper>
         <ScheduleButton
-          clickFn={ scheduleClick }/>
+          clickFn={this.scheduleClick}
+        />
         <Paragraph>It&apos;s free, with no obligation - cancel anytime</Paragraph>
         <Contact
           phone={houseData ? houseData.phone_number : 'Didnt get it'}
         />
         <Refund
-          price={ houseData
+          price={houseData
             ? houseData.listing_price : 'Didnt get it'}
         />
         <StartOffer />

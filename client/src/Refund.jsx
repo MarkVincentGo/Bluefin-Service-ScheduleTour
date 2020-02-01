@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Wrapper, Text, SVG } from './styles/Refund-style';
 import RefundFlyout from './RefundFlyout';

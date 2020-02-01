@@ -1,9 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import Button from './styles/ScheduleButton-style';
 
-//there will be some logic in this component to check whether tours are available that day.
+// there will be some logic in this component to check whether tours are available that day.
 // if tour not available, render "this home is unavailable to tour on this day" rather than button
 const ScheduleButton = ({ clickFn }) => (
   <>
