@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Wrapper, Box1, Box2 } from './styles/Contact-Style';
 
 const Contact = ({ phone }) => (

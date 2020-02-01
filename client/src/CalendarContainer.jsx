@@ -1,7 +1,6 @@
 import React from 'react';
 import CalendarEntry from './CalendarEntry';
-import { Wrapper } from './styles/CalendarContainer-style'
-import PropTypes from 'prop-types'
+import { Wrapper } from './styles/CalendarContainer-style';
 
 
 const CalendarContainer = ({ dates, clickFn, selectedDate }) => {
@@ -26,7 +25,8 @@ const CalendarContainer = ({ dates, clickFn, selectedDate }) => {
                   date: dates.date[i],
                 }}
                 clickFn={clickFn}
-                selected={selected} />
+                selected={selected}
+              />
             </span>
           </>
         );
