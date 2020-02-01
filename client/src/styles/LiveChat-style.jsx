@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   height: 580px;
   width: 375px;
-  background-color: #d1d1d1;
+  background-color: #f5f5f5;
   border: 1px solid black;
 
   position: fixed;
@@ -26,10 +26,17 @@ const Header = styled.div`
 `;
 
 const ChatContainer = styled.div`
-  height: 520px;
+  height: 480px;
   width: 375px;
 
   border: 1px solid black;
+  overflow-y: scroll;
 `;
 
-export { Wrapper, Header, ChatContainer };
+const Input = styled.input`
+  border: 1px solid black;
+  height: 35px;
+  width: 370px;
+`;
+
+export { Wrapper, Header, ChatContainer, Input };

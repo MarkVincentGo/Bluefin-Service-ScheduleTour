@@ -1,10 +1,23 @@
 import React from 'react';
-import { Wrapper, Header, ChatContainer } from './styles/LiveChat-style';
+import { Wrapper, Header, ChatContainer, Input } from './styles/LiveChat-style';
+import ChatEntry from './ChatEntry';
 
 const LiveChat = () => (
   <Wrapper>
     <Header>Talk to Bluefin</Header>
-    <ChatContainer />
+    <ChatContainer>
+      <ChatEntry text={'wvpoidfbvpwodfijwdpofigjwmropfivpgwjvemrpodigvjsdfpgoinwbjrpfgovinjrsdpgovinsjdfgpvoirdjnvgmpisodcpodfigjvwmcofgijimprsdowrdiovgjwmrsdopiflgjkvwnordsiflgkjvsdfigjkvnsdfkgjvmsdfikjgvsdmfigjvms'}/>
+      <ChatEntry text={'hi'}/>
+      <ChatEntry text={'wvpoidfbvpwodfijwdpofigjwmropfivpgwjvemrpodigvjsdfpgoinwbjrpfgovinjrsdpgovinsjdfgpvoirdjnvgmp'}/>
+      <ChatEntry text={'oiumpoijfpowijfpioadsjcspodfij'}/>
+      <ChatEntry text={'io'}/>
+      <ChatEntry text={'wvpoidfbvpwodfijwdpofigjwmropfivpgwjvemrpodigvjsdfpgoinwbjrpfgovinjrsdpgovinsjdfgpvoirdjnvgmpisodcpodfigjvwmcofgijimprsdowrdiovgjwmrsdopiflgjkvwnordsiflgkjvsdfigjkvnsdfkgjvmsdfikjgvsdmfigjvms'}/>
+      <ChatEntry text={'hi'}/>
+      <ChatEntry text={'wvpoidfbvpwodfijwdpofigjwmropfivpgwjvemrpodigvjsdfpgoinwbjrpfgovinjrsdpgovinsjdfgpvoirdjnvgmp'}/>
+      <ChatEntry text={'oiumpoijfpowijfpioadsjcspodfij'}/>
+      <ChatEntry text={'io'}/>
+    </ChatContainer>
+    <Input />
   </Wrapper>
 );
 
