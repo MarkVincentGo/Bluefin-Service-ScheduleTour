@@ -21,9 +21,7 @@ module.exports = {
   },
   plugins: [
     'react',
-    'jest'
   ],
   rules: {
-    import/no-duplicates: false,
   },
 };
