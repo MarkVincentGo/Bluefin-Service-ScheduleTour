@@ -7,6 +7,9 @@ const Wrapper = styled.div`
   white-space: nowrap;
   overflow-x: scroll;
   scroll-snap-type: x proximity;
+  &::scrollbar {
+    display: none;
+  }
 `;
 
-export { Wrapper };
+export default Wrapper;

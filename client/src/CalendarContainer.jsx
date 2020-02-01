@@ -1,6 +1,6 @@
 import React from 'react';
 import CalendarEntry from './CalendarEntry';
-import { Wrapper } from './styles/CalendarContainer-style';
+import Wrapper from './styles/CalendarContainer-style';
 
 
 const CalendarContainer = ({ dates, clickFn, selectedDate }) => {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import getDates from './helpers/getDates';
+
 import {
-  AppWrapper, Header, Paragraph, GlobalStyles, CalendarWrapper
+  AppWrapper, Header, Paragraph, GlobalStyles, CalendarWrapper,
 } from './styles/app-style';
 
 import CalendarContainer from './CalendarContainer';
@@ -52,6 +52,8 @@ export default class App extends Component {
 
   render() {
     const { houseData, selectedDate } = this.state;
+    const calendarEntryClick = this.calendarEntryClick.bind(this);
+    const scheduleClick = this.scheduleClick.bind(this);
 
     return (
       <AppWrapper>
@@ -64,15 +66,15 @@ export default class App extends Component {
               : (
                 <CalendarContainer
                   dates={getDates()}
-                  clickFn={this.calendarEntryClick.bind(this)}
+                  clickFn={ calendarEntryClick }
                   selectedDate={selectedDate}
                 />
               )
           }
         </CalendarWrapper>
         <ScheduleButton
-          clickFn={this.scheduleClick.bind(this)}/>
-        <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
+          clickFn={ scheduleClick }/>
+        <Paragraph>It&apos;s free, with no obligation - cancel anytime</Paragraph>
         <Contact
           phone={houseData ? houseData.phone_number : 'Didnt get it'}
         />
@@ -82,7 +84,6 @@ export default class App extends Component {
         />
         <StartOffer />
       </AppWrapper>
-
     );
   }
 }

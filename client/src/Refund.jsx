@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Wrapper, Text, SVG } from './styles/Refund-style';
-import AskQFlyout from './AskQFlyout';
+import RefundFlyout from './RefundFlyout';
 
 const Refund = ({ price }) => {
   const [toggle, setToggle] = useState(false);
@@ -8,7 +8,7 @@ const Refund = ({ price }) => {
   return (
     <Wrapper>
       { toggle
-        ? <AskQFlyout />
+        ? <RefundFlyout />
         : <></> }
       <Text onClick={() => setToggle(!toggle)}>
         Bluefin Refund: $
