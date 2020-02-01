@@ -18,6 +18,7 @@ const Box1 = styled.a`
   margin: 0;
   display: inline-block;
   border-right: 1px solid #d1d1d1;
+  cursor: pointer;
 
   text-decoration: none;
   font-size: 0.875rem;
@@ -35,6 +36,7 @@ const Box2 = styled.a`
   height: 19px;
   margin: 0;
   display: inline-block;
+  cursor: pointer;
 
   text-decoration: none;
   font-size: 0.875rem;

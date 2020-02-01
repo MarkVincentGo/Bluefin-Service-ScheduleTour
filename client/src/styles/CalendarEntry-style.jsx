@@ -10,6 +10,8 @@ const RegularWrapper = styled.div`
   padding-top: 12px;
   border: 1px solid #d1d1d1;
   border-radius: 2px;
+  scroll-snap-align: start;
+  cursor: pointer;
 
   display: inline-block;
   text-align: center;
