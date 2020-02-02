@@ -25,4 +25,6 @@ const Button = styled.div`
 
 `
 
+Button.displayName = 'Button';
+
 export { Button };

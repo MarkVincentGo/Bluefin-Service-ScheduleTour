@@ -6,6 +6,7 @@ import { AppWrapper, Header, Paragraph, GlobalStyles, CalendarWrapper } from './
 
 import CalendarContainer from './CalendarContainer'
 import ScheduleButton from './ScheduleButton'
+import Contact from './Contact'
 
 export default class App extends Component {
   constructor(props) {
@@ -49,21 +50,23 @@ export default class App extends Component {
       <AppWrapper>
         <GlobalStyles />
           <Header>Go Tour This Home</Header>
-        <CalendarWrapper>
-          {
-            this.state.houseData === null ?
-            <p>Hello</p> :
-            <CalendarContainer
-            dates={getDates()}
-            clickFn={this.calendarEntryClick.bind(this)}
-            selectedDate={this.state.selectedDate}
-            />
-          }
-        </CalendarWrapper>
+          <CalendarWrapper>
+            {
+              this.state.houseData === null ?
+              <p>Hello</p> :
+              <CalendarContainer
+              dates={getDates()}
+              clickFn={this.calendarEntryClick.bind(this)}
+              selectedDate={this.state.selectedDate}
+              />
+            }
+          </CalendarWrapper>
           <ScheduleButton
           clickFn={this.scheduleClick.bind(this)}/>
           <Paragraph>It's free, with no obligation - cancel anytime</Paragraph>
+          <Contact
+          phone={ this.state.houseData ? this.state.houseData.phone_number : 'Didnt get it' }/>
       </AppWrapper>
     )
-  }
+  };
 };

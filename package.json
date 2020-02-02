@@ -10,13 +10,14 @@
   "scripts": {
     "react-start": "webpack -d --watch",
     "server-start": "nodemon server/index.js",
-    "test": "jest --config ./jest.config.json --watch --coverage --verbose",
+    "test": "jest --config ./jest.config.js --watch --coverage --verbose",
     "seed": "node db/index.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",
     "express": "^4.17.1",
+    "jest-environment-enzyme": "^7.1.2",
     "mongoose": "^5.8.9",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
@@ -42,6 +43,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "faker": "^4.1.0",
     "jest": "^25.1.0",
+    "jest-enzyme": "^7.1.2",
     "morgan": "^1.9.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",

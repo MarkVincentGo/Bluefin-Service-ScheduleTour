@@ -49,6 +49,12 @@ const Month = styled.div`
   font-size: 12px;
 `;
 
+RegularWrapper.displayName = 'NotSelected';
+SelectedWrapper.displayName = 'Selected';
+Day.displayName = 'Day';
+Date.displayName = 'Date';
+Month.displayName = 'Month';
+
 export {
   RegularWrapper,
   SelectedWrapper,
@@ -56,3 +62,4 @@ export {
   Date,
   Month,
 };
+
