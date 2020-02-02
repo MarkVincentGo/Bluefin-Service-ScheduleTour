@@ -4,11 +4,11 @@ const Wrapper = styled.div`
   height: 580px;
   width: 375px;
   background-color: #f5f5f5;
-  border: 1px solid black;
 
   position: fixed;
   top: 250px;
   left: 600px;
+  box-shadow: 0px 2px 12px -2px rgba(0,0,0,0.75);
 `;
 
 const Header = styled.div`
@@ -29,12 +29,11 @@ const ChatContainer = styled.div`
   height: 480px;
   width: 375px;
 
-  border: 1px solid black;
   overflow-y: scroll;
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
+
   height: 35px;
   width: 370px;
 `;
