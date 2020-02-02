@@ -17,7 +17,7 @@ exports[`App snapshot renders 1`] = `
     </p>
   </div>
   <div
-    className="sc-fzXfLO YBXKY"
+    className="sc-fzXfLP itsnao"
     onClick={[Function]}
   >
     Schedule Tour
