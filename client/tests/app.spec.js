@@ -8,11 +8,28 @@ import CalendarContainer from '../src/CalendarContainer';
 import CalendarEntry from '../src/CalendarEntry';
 import ScheduleButton from '../src/ScheduleButton';
 import Contact from '../src/Contact'
-import { Box1, Box2 } from '../src/styles/Contact-style'
+import { Box1, Box2 } from '../src/styles/Contact-style';
+import Refund from '../src/Refund';
+import StartOffer from '../src/StartOffer';
 
 jest.mock('axios');
 
 describe('App', () => {
+  let data;
+  beforeEach(() => {
+    data = {
+      data: [
+        {
+          id: 123456789,
+          listing_price: 123456,
+          name: 'Mamba'
+        }
+      ]
+    };
+    axios.get = jest.fn(() => Promise.resolve(data));
+    axios.post = jest.fn(() => Promise.resolve());
+  });
+
   xit('snapshot renders', () => {
     const app = renderer.create(<App />);
     let tree = app.toJSON();
@@ -20,21 +37,6 @@ describe('App', () => {
   });
 
   describe('On mount', () => {
-    let data;
-    beforeEach(() => {
-      data = {
-        data: [
-          {
-            id: 123456789,
-            listing_price: 123456,
-            name: 'Mamba'
-          }
-        ]
-      };
-      axios.get = jest.fn(() => Promise.resolve(data));
-      axios.post = jest.fn(() => Promise.resolve());
-    });
-
     it('keeps the listingId state null if no number passed in as props', async () => {
       const wrapper = shallow(<App />);
       await Promise.all([
@@ -199,15 +201,26 @@ describe('App', () => {
      });
   });
 
-  describe('Refund Button', () => {
-    xtest('refund component renders', () => {
+  describe('Refund Info', () => {
+    test('refund component renders', () => {
+      const wrapper = shallow(<Refund />);
+      expect(wrapper).toContainMatchingElement('Refund');
+      expect(wrapper).toContainMatchingElement('Text');
+      expect(wrapper).toContainMatchingElement('SVG');
+    });
+
+    it('calculates a fixed percent refund', () => {
+      const wrapper = mount(<Refund price={10000} />);
+      expect(wrapper.find('Text').text()).toEqual('Bluefin Refund: $37')
 
     });
   });
 
   describe('Start Offer button', () => {
-    xtest('start offer component renders', () => {
-
+    test('start offer component renders', () => {
+      const wrapper = shallow(<StartOffer />);
+      expect(wrapper).toContainMatchingElement('StartOfferButton');
+      expect(wrapper).toContainMatchingElement('StartOfferText');
     });
   });
 });

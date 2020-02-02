@@ -10,6 +10,7 @@ const Button = styled.div`
   padding-top: 10px;
   text-align: center;
   font-weight: 500;
+  cursor: pointer;
 
   color: white;
   background-color: #2da6a2;
