@@ -12,7 +12,7 @@ import Contact from '../src/Contact';
 import { Box1, Box2 } from '../src/styles/Contact-style';
 import Refund from '../src/Refund';
 import StartOffer from '../src/StartOffer';
-import Refundlyout from '../src/RefundFlyout'
+import RefundFlyout from '../src/RefundFlyout';
 
 jest.mock('axios');
 

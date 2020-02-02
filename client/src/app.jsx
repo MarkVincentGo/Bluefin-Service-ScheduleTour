@@ -55,7 +55,7 @@ export default class App extends Component {
         // eslint-disable-next-line no-console
         console.log(response.data);
       });
-  };
+  }
 
   askQClick() {
     const { chat } = this.state;

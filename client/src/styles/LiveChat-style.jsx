@@ -38,4 +38,6 @@ const Input = styled.input`
   width: 370px;
 `;
 
-export { Wrapper, Header, ChatContainer, Input };
+export {
+  Wrapper, Header, ChatContainer, Input,
+};
