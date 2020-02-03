@@ -14,26 +14,25 @@ const getDates = () => {
 
   const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-  const nextTwoWeeks = {
-    day: [],
-    month: [],
-    date: [],
-  };
+  const nextTwoWeeks = [];
 
   const months31 = [0, 2, 4, 6, 7, 9, 11];
 
   for (let i = 0; i < 12; i += 1) {
+    const singleDay = {};
+
+    singleDay.id = i;
     // this block deals with the days
-    nextTwoWeeks.day.push(days[dayWrite]);
+    singleDay.dayOfWeek = days[dayWrite];
     dayWrite += 1;
-    if (dayWrite === 7) { dayWrite = 0; };
+    if (dayWrite === 7) { dayWrite = 0; }
 
     // this blick deals with months
-    nextTwoWeeks.month.push(months[monthWrite]);
+    singleDay.month = months[monthWrite];
 
     // this block deals with the dates
-    nextTwoWeeks.date.push(dateWrite);
-      dateWrite += 1;
+    singleDay.dayOfMonth = dateWrite;
+    dateWrite += 1;
     // if month is february
     if (monthWrite === 1) {
       if (yearWrite % 4 === 0 && dateWrite === 30) {
@@ -46,11 +45,12 @@ const getDates = () => {
     } else if (months31.includes(monthWrite) && dateWrite === 32) {
       dateWrite = 1;
       monthWrite += 1;
-      if (monthWrite === 12) {monthWrite = 0};
+      if (monthWrite === 12) { monthWrite = 0; }
     } else if (months31.indexOf(monthWrite) === -1 && dateWrite === 31) {
       dateWrite = 1;
       monthWrite += 1;
-    };
+    }
+    nextTwoWeeks.push(singleDay);
   }
   return nextTwoWeeks;
 };
