@@ -28,6 +28,7 @@ const ChatBubble = styled.div`
   padding: 10px;
   background-color: white;
   display: inline-block;
+  font-size: 200;
 
   position: relative;
   left: 20px;

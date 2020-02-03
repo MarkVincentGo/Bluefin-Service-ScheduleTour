@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   white-space: nowrap;
   font-size: 0.875rem;
   font-weight: 200;
+  position: relative;
 `;
 
 const Text = styled.div`
