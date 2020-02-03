@@ -69,23 +69,10 @@ describe('App', () => {
         })
       ])
     });
-
-    // to see if rerendering works... will change as components are added
-    // it('renders the name of the agent to dom', async () => {
-    //     const wrapper = shallow(<App listingId={123456789}/>);
-    //     await Promise.all([
-    //       wrapper.setState({houseData: {
-    //         id: 123456789,
-    //         listing_price: 123456,
-    //         name: 'Mamba'
-    //       }}, () => {
-    //         expect(wrapper.find('p').text()).toEqual('Mamba');
-    //       })
-    //     ]);
-    // })
   });
 
   describe('Calendar', () => {
+
     it('should render to the dom', () => {
       const wrapper = shallow(<App listingId={123456789}/>);
       wrapper.setState({houseData: 'something'});
@@ -93,40 +80,84 @@ describe('App', () => {
     });
 
     it('renders calendar entries for next two weeks', () => {
-      const dates = {
-        day: [
-          'Thursday',  'Friday',
-          'Saturday',  'Sunday',
-          'Monday',    'Tuesday',
-          'Wednesday', 'Thursday',
-          'Friday',    'Saturday',
-          'Sunday',    'Monday'
-        ],
-        month: [
-          'January',  'January',
-          'January',  'February',
-          'February', 'February',
-          'February', 'February',
-          'February', 'February',
-          'February', 'February'
-        ],
-        date: [
-          29, 30, 31, 1, 2,
-           3,  4,  5, 6, 7,
-           8,  9
-        ]
-      }
+      const dates = [
+        { id: 0, dayOfWeek: 'TUESDAY', month: 'FEB', dayOfMonth: 3 },
+        { id: 1, dayOfWeek: 'WEDNESDAY', month: 'FEB', dayOfMonth: 4 },
+        { id: 2, dayOfWeek: 'THURSDAY', month: 'FEB', dayOfMonth: 5 },
+        { id: 3, dayOfWeek: 'FRIDAY', month: 'FEB', dayOfMonth: 6 },
+        { id: 4, dayOfWeek: 'SATURDAY', month: 'FEB', dayOfMonth: 7 },
+        { id: 5, dayOfWeek: 'SUNDAY', month: 'FEB', dayOfMonth: 8 },
+        { id: 6, dayOfWeek: 'MONDAY', month: 'FEB', dayOfMonth: 9 },
+        { id: 7, dayOfWeek: 'TUESDAY', month: 'FEB', dayOfMonth: 10 },
+        { id: 8, dayOfWeek: 'WEDNESDAY', month: 'FEB', dayOfMonth: 11 },
+        { id: 9, dayOfWeek: 'THURSDAY', month: 'FEB', dayOfMonth: 12 },
+        { id: 10, dayOfWeek: 'FRIDAY', month: 'FEB', dayOfMonth: 13 },
+        { id: 11, dayOfWeek: 'SATURDAY', month: 'FEB', dayOfMonth: 14 }
+      ];
       const wrapper = mount(<CalendarContainer dates={dates}/>);
       expect(wrapper.find(CalendarEntry).length).toEqual(12);
+    });
+
+    describe('Calendar Button', () => {
+      let dates;
+      beforeEach(()=> {
+        dates = [
+          { id: 0, dayOfWeek: 'TUESDAY', month: 'FEB', dayOfMonth: 3 },
+          { id: 1, dayOfWeek: 'WEDNESDAY', month: 'FEB', dayOfMonth: 4 },
+          { id: 2, dayOfWeek: 'THURSDAY', month: 'FEB', dayOfMonth: 5 },
+          { id: 3, dayOfWeek: 'FRIDAY', month: 'FEB', dayOfMonth: 6 },
+          { id: 4, dayOfWeek: 'SATURDAY', month: 'FEB', dayOfMonth: 7 },
+          { id: 5, dayOfWeek: 'SUNDAY', month: 'FEB', dayOfMonth: 8 },
+          { id: 6, dayOfWeek: 'MONDAY', month: 'FEB', dayOfMonth: 9 },
+          { id: 7, dayOfWeek: 'TUESDAY', month: 'FEB', dayOfMonth: 10 },
+          { id: 8, dayOfWeek: 'WEDNESDAY', month: 'FEB', dayOfMonth: 11 },
+          { id: 9, dayOfWeek: 'THURSDAY', month: 'FEB', dayOfMonth: 12 },
+          { id: 10, dayOfWeek: 'FRIDAY', month: 'FEB', dayOfMonth: 13 },
+          { id: 11, dayOfWeek: 'SATURDAY', month: 'FEB', dayOfMonth: 14 }
+        ];
+      });
+
+      it('invokes prevButton handler when prev button is clicked', () => {
+        const wrapper = mount(<CalendarContainer dates={dates} />);
+        const refs = dates.reduce((acc, value) => {
+          acc[value.id] = React.createRef();
+          return acc;
+        }, {});
+        wrapper.setState({ refs }, () => {
+          expect(wrapper.state().currentStart).toEqual(0);
+          const instance = wrapper.instance();
+          instance.prevHandleClick = jest.fn();
+          wrapper.setState({currentStart: 3, prevButton: true}, () => {
+            wrapper.find('PrevButton').simulate('click');
+            expect(instance.prevHandleClick).toHaveBeenCalledTimes(1);
+          });
+        })
+      });
+
+      it('invokes nextButton handler when next button is clicked', () => {
+        const wrapper = mount(<CalendarContainer dates={dates} />);
+        const refs = dates.reduce((acc, value) => {
+          acc[value.id] = React.createRef();
+          return acc;
+        }, {});
+        wrapper.setState({ refs }, () => {
+          expect(wrapper.state().currentStart).toEqual(0);
+          const instance = wrapper.instance();
+          instance.nextHandleClick = jest.fn();
+          wrapper.find('NextButton').simulate('click');
+          expect(instance.nextHandleClick).toHaveBeenCalledTimes(1);
+        })
+      });
     });
 
     describe('Calendar entry', () => {
       let date;
       beforeEach(() => {
         date = {
-          day: 'WEDNESDAY',
+          id: 1,
+          dayOfWeek: 'WEDNESDAY',
           month: 'JAN',
-          date: 29
+          dayOfMonth: 29
         };
       });
 

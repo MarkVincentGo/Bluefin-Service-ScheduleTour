@@ -42,6 +42,12 @@ const PrevButton = styled(NextButton)`
   left: 0;
 `;
 
+Wrapper.displayName = 'CalendarWrapper';
+EntryWrapper.displayName = 'EntryWrapper';
+NextButton.displayName = 'NextButton';
+PrevButton.displayName = 'PrevButton';
+
+
 export {
   Wrapper, EntryWrapper, NextButton, PrevButton,
 };

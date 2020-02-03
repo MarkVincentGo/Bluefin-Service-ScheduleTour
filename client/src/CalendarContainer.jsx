@@ -89,11 +89,7 @@ export default class CalendarContainer extends React.Component {
                   <CalendarEntry
                     refs={refs ? refs[date.id] : null}
                     key={date}
-                    date={{
-                      dayOfWeek: date.dayOfWeek,
-                      month: date.month,
-                      dayOfMonth: date.dayOfMonth,
-                    }}
+                    date={date}
                     clickFn={clickFn}
                     selected={selected}
                   />
