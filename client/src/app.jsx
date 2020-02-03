@@ -12,6 +12,7 @@ import ScheduleButton from './ScheduleButton';
 import Contact from './Contact';
 import Refund from './Refund';
 import StartOffer from './StartOffer';
+import LiveChat from './LiveChat';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,9 +20,11 @@ export default class App extends Component {
     this.state = {
       houseData: null,
       selectedDate: null,
+      chat: false,
     };
     this.calendarEntryClick = this.calendarEntryClick.bind(this);
     this.scheduleClick = this.scheduleClick.bind(this);
+    this.askQClick = this.askQClick.bind(this);
   }
 
   componentDidMount() {
@@ -54,8 +57,13 @@ export default class App extends Component {
       });
   }
 
+  askQClick() {
+    const { chat } = this.state;
+    this.setState({ chat: !chat });
+  }
+
   render() {
-    const { houseData, selectedDate } = this.state;
+    const { houseData, selectedDate, chat } = this.state;
 
     return (
       <AppWrapper>
@@ -80,12 +88,14 @@ export default class App extends Component {
         <Paragraph>It&apos;s free, with no obligation - cancel anytime</Paragraph>
         <Contact
           phone={houseData ? houseData.phone_number : 'Didnt get it'}
+          clickFn={this.askQClick}
         />
         <Refund
           price={houseData
             ? houseData.listing_price : 'Didnt get it'}
         />
         <StartOffer />
+        { chat ? <LiveChat /> : <></>}
       </AppWrapper>
     );
   }

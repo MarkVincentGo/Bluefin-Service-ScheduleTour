@@ -25,6 +25,8 @@ mainApp.get('/house', (req, res) => {
   });
 });
 
+
+
 mainApp.post('/schedule', (req, res) => {
   // for testing the front end... no added functionality yet
   console.log(req.body);
