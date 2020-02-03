@@ -1,8 +1,8 @@
 module.exports = {
   clearMocks: true,
   testEnvironment: 'enzyme',
-  testRegex: "((\\.|/*.)(spec))\\.js?$",
+  testRegex: '((\\.|/*.)(spec))\\.js?$',
   setupFilesAfterEnv: [
-    "jest-enzyme",
-  ]
-}
+    'jest-enzyme',
+  ],
+};

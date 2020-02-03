@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const RegularWrapper = styled.div`
   box-sizing: border-box;
   height: 84px;
-  width: 74px;
+  width: 89.667px;
 
   margin-right: 10px;
   margin-botton: 10px;
@@ -31,7 +31,7 @@ const RegularWrapper = styled.div`
 const SelectedWrapper = styled.div`
   box-sizing: border-box;
   height: 84px;
-  width: 74px;
+  width: 89.667px;
   margin-right: 10px;
   padding-top: 11px;
   border: 2px solid #777;
@@ -39,7 +39,7 @@ const SelectedWrapper = styled.div`
   display: inline-block;
   text-align: center;
   box-shadow: 0px 2px 12px -2px rgba(0,0,0,0.75);
-`
+`;
 
 const Day = styled.div`
   font-size: 10px;
@@ -64,4 +64,3 @@ export {
   Date,
   Month,
 };
-

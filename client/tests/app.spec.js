@@ -1,16 +1,18 @@
+/* eslint-disable*/
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Enzyme, { mount, shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import axios from 'axios';
 
 import App from '../src/app';
 import CalendarContainer from '../src/CalendarContainer';
 import CalendarEntry from '../src/CalendarEntry';
 import ScheduleButton from '../src/ScheduleButton';
-import Contact from '../src/Contact'
+import Contact from '../src/Contact';
 import { Box1, Box2 } from '../src/styles/Contact-style';
 import Refund from '../src/Refund';
 import StartOffer from '../src/StartOffer';
+import Refundlyout from '../src/RefundFlyout'
 
 jest.mock('axios');
 
@@ -212,7 +214,24 @@ describe('App', () => {
     it('calculates a fixed percent refund', () => {
       const wrapper = mount(<Refund price={10000} />);
       expect(wrapper.find('Text').text()).toEqual('Bluefin Refund: $37')
+    });
 
+    describe('Flyout', () => {
+      it('renders upon click to the SVG', () => {
+        const wrapper = mount(<Refund />);
+        expect(wrapper.find(RefundFlyout).length).toEqual(0);
+        wrapper.find('SVG').simulate('click');
+        expect(wrapper.find(RefundFlyout).length).toEqual(1);
+      });
+
+      it('unrenders upon click to the SVG', () => {
+        const wrapper = mount(<Refund />);
+        expect(wrapper.find(RefundFlyout).length).toEqual(0);
+        wrapper.find('SVG').simulate('click');
+        expect(wrapper.find(RefundFlyout).length).toEqual(1);
+        wrapper.find('SVG').simulate('click');
+        expect(wrapper.find(RefundFlyout).length).toEqual(0);
+      });
     });
   });
 

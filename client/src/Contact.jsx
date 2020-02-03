@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { Wrapper, Box1, Box2 } from './styles/Contact-style'
+import { Wrapper, Box1, Box2 } from './styles/Contact-Style';
 
 const Contact = ({ phone }) => (
   <Wrapper>

@@ -24,8 +24,8 @@ const Button = styled.div`
     box-shadow: 0 0 0 2px #5ea0f7;
   }
 
-`
+`;
 
 Button.displayName = 'Button';
 
-export { Button };
+export default Button;

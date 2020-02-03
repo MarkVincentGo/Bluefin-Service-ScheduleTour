@@ -47,7 +47,7 @@ const Box2 = styled.a`
   &:hover {
     color: #65c0ce;
   }
-`
+`;
 
 Wrapper.displayName = 'Wrapper';
 Box1.displayName = 'AskQuestion';
