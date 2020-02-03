@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   z-index: 300;
   position: absolute;
   top: 280px;
-  left: 98px;
+  left: 48px;
 `;
 
 

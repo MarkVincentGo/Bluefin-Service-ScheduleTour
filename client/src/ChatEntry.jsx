@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import { Wrapper, ChatBubble, Avatar } from './styles/ChatEntry-style';
 

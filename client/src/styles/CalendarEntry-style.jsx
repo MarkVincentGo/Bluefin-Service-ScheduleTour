@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const RegularWrapper = styled.div`
   box-sizing: border-box;
   height: 84px;
-  width: 89.667px;
+  width: 84.667px;
 
   margin-right: 10px;
   margin-botton: 10px;
@@ -31,7 +31,7 @@ const RegularWrapper = styled.div`
 const SelectedWrapper = styled.div`
   box-sizing: border-box;
   height: 84px;
-  width: 89.667px;
+  width: 84.667px;
   margin-right: 10px;
   padding-top: 11px;
   border: 2px solid #777;

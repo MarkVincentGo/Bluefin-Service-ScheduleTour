@@ -4,7 +4,7 @@ const AppWrapper = styled.div`
   height: 436px;
   width: 313px;
   border: 1px solid black;
-  margin-left: 150px;
+  margin-left: 100px;
 `;
 
 const Header = styled.h3`
@@ -23,9 +23,9 @@ const Paragraph = styled.div`
 
 const CalendarWrapper = styled.div`
   height: 114px;
-  width: 290px;
-  margin: 0 10px;
-  overflow-x: scroll;
+  width: 313px;
+  position: relative
+  display: inline-block;
 `;
 
 const GlobalStyles = createGlobalStyle`
@@ -35,10 +35,23 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const NextButton = styled.div`
+  height: 32px;
+  width: 32px;
+  border: 1px solid #777;
+  border-radius: 100%;
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+  bottom: 67px;
+  left: 279px;
+`;
+
 export {
   AppWrapper,
   Header,
   Paragraph,
   CalendarWrapper,
   GlobalStyles,
+  NextButton,
 };

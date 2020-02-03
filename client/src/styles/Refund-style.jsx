@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   height: 65px;
-  margin-top: 30px;
+  margin-top: 15px;
   text-align: center;
   white-space: nowrap;
   font-size: 0.875rem;

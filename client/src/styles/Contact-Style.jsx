@@ -6,13 +6,13 @@ const Wrapper = styled.div`
   width: 310px;
   border-top: 1px solid #d1d1d1;
   border-bottom: 1px solid #d1d1d1;
-  margin: 10px auto 0;
+  margin: 25px auto 0;
   padding-top: 10px;
   text-align: center;
   white-space: nowrap;
 `;
 
-const Box1 = styled.a`
+const Box1 = styled.div`
   width: 156.5px;
   height: 19px;
   margin: 0;
