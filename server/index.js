@@ -18,8 +18,10 @@ mainApp.get('/house', (req, res) => {
   const id = q.listingId;
   db.getData(id, (err, results) => {
     if (err) {
+      res.set('access-control-allow-origin', '*');
       res.send(err);
     } else {
+      res.set('access-control-allow-origin', '*');
       res.send(results);
     }
   });
@@ -27,7 +29,7 @@ mainApp.get('/house', (req, res) => {
 
 mainApp.post('/schedule', (req, res) => {
   // for testing the front end... no added functionality yet
-  console.log(req.body);
+  res.set('access-control-allow-origin', '*');
   res.send(req.body);
 });
 

@@ -1,8 +1,8 @@
 {
   "name": "bluefin_tour",
-  "version": "",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "Schedule Tour component of Bluefin",
+  "author": "Mark Go",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
