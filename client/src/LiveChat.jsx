@@ -11,7 +11,6 @@ export default class LiveChat extends React.Component {
       afterHours: null,
       chat: [],
     };
-    this.input = '';
   }
 
   componentDidMount() {
@@ -23,24 +22,20 @@ export default class LiveChat extends React.Component {
     }
   }
 
-  handleInput(event) {
-    this.input = (event.target.value);
-    console.log(this.input)
-
-    if (event.target.keyCode === 13) {
-      this.sendChat();
+  handleEnter(event) {
+    const { chat, input } = this.state;
+    if (event.keyCode === 13) {
+      chat.push(input);
+      this.setState({ chat, input: '' });
     }
   }
 
-  sendChat() {
-    console.log('invoked')
-    const { chat } = this.state;
-    chat.push(this.input);
-    this.setState({ chat });
+  handleInput(event) {
+    this.setState({ input: event.target.value });
   }
 
   render() {
-    const { afterHours, chat } = this.state;
+    const { afterHours, chat, input } = this.state;
     return (
       afterHours
         ? (
@@ -56,11 +51,18 @@ export default class LiveChat extends React.Component {
           <Wrapper>
             <Header>We Aint Live Chief</Header>
             <ChatContainer>
-                <ChatEntry text={'How can we help you?'}/>
+              <ChatEntry text={'How can we help you?'}/>
+              {
+                chat.map((message) => (
+                  <ChatEntry text={message} />
+                ))
+              }
             </ChatContainer>
             <Input
               placeholder="Type a message..."
-              onChange={this.handleInput.bind(this)}/>
+              onChange={this.handleInput.bind(this)}
+              onKeyDown={this.handleEnter.bind(this)}
+              value={input} />
           </Wrapper>
         )
 
