@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 
   position: fixed;
   top: 250px;
-  left: 600px;
+  left: 500px;
   box-shadow: 0px 2px 12px -2px rgba(0,0,0,0.75);
 `;
 
@@ -33,9 +33,9 @@ const ChatContainer = styled.div`
 `;
 
 const Input = styled.input`
-
   height: 35px;
   width: 370px;
+  font-size: 1rem;
 `;
 
 export {
