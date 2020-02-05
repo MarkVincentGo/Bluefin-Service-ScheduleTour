@@ -10,8 +10,9 @@
   "scripts": {
     "react-start": "webpack -d --watch",
     "server-start": "nodemon server/index.js",
-    "test": "jest --config ./jest.config.js --watch --coverage --verbose",
-    "seed": "node db/index.js"
+    "test": "jest -u",
+    "seed": "node db/index.js",
+    "test-w": "jest --config ./jest.config.js --watch --coverage --verbose"
   },
   "dependencies": {
     "axios": "^0.19.2",
