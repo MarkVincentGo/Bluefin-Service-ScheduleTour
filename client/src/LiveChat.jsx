@@ -25,6 +25,7 @@ export default class LiveChat extends React.Component {
   handleEnter(event) {
     const { chat, input } = this.state;
     if (event.keyCode === 13) {
+      console.log('enter');
       chat.push(input);
       this.setState({ chat, input: '' });
     }
@@ -42,15 +43,6 @@ export default class LiveChat extends React.Component {
           <Wrapper>
             <Header>Talk to Bluefin</Header>
             <ChatContainer>
-                <ChatEntry text={'How can we help you?'}/>
-            </ChatContainer>
-            <Input placeholder="Type a message..."/>
-          </Wrapper>
-        )
-        : (
-          <Wrapper>
-            <Header>We Aint Live Chief</Header>
-            <ChatContainer>
               <ChatEntry text={'How can we help you?'}/>
               {
                 chat.map((message) => (
@@ -58,11 +50,30 @@ export default class LiveChat extends React.Component {
                 ))
               }
             </ChatContainer>
+            <Input placeholder="Type a message..."
+            onChange={this.handleInput.bind(this)}
+            onKeyDown={this.handleEnter.bind(this)}/>
+          </Wrapper>
+        )
+        : (
+          <Wrapper>
+            <Header>We Aint Live Chief</Header>
+            <ChatContainer>
+              <ChatEntry text={'How can we help you?'}
+              />
+              {
+                chat.map((message) => (
+                  <ChatEntry text={message} />
+                ))
+              }
+            </ChatContainer>
             <Input
+              type="text"
               placeholder="Type a message..."
               onChange={this.handleInput.bind(this)}
               onKeyDown={this.handleEnter.bind(this)}
-              value={input} />
+              value={input}
+            />
           </Wrapper>
         )
 
