@@ -1,30 +1,18 @@
 # Project Name
 
-> Project description
+> Big Tuna
 
-## Related Projects
+## Description
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+React project which allows a house-buying user to schedule a tour with an agent.
 
 ## Usage
 
-> Some usage instructions
+After installing dependencies, run `npm run server-dev` in the terminal to start Express server.
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node
 
 ## Development
 
@@ -36,4 +24,5 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+
 
