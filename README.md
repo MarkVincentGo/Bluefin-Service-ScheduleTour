@@ -1,6 +1,4 @@
-# Project Name
-
-> Big Tuna
+# Big Tuna
 
 ## Description
 
